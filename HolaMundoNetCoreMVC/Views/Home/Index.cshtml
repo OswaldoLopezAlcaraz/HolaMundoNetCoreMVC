@@ -4,7 +4,9 @@
 }
 
 
-
+<!--Este es la función que se instala a la ventana principal y que se activa cuando 
+    el viewBag deja de estar vacio por activación del botón
+-->
 @if (ViewBag.Message != null)
 {
     <script type="text/javascript">
@@ -14,7 +16,7 @@
     </script>
 }
 
-
+<!--Este es el formulario (Dos campos de textos y un boton) -->
 <div class="row">
     <div class="col-md">
         <form id="frmValidar" asp-action="ValidarTexto" asp-controller="Home"

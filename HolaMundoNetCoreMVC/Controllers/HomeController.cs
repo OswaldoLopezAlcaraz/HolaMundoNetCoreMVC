@@ -47,24 +47,32 @@ namespace HolaMundoNetCoreMVC.Controllers
         /// <returns>IActionResult que regresa el view Index</returns>
         public IActionResult ValidarTexto(string Contrasena, string RepiteContrasena)
         {
+            //Instancia que contiene el regex con el patrón a validar.
             Regex regex = new Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*\\W).+$");
 
+            // Se valida si la contraseña proporcionada en el primer campo de texto.
             if (regex.IsMatch(Contrasena))
             {
+                // Si la primera validación es correcta, se valida que ambos campos de textos sean iguales.
                 if (RepiteContrasena.Equals(Contrasena))
                 {
+                    // Si las dos contraseñas son iguales, se manda el mensaje de validación exitosa.
                     ViewBag.Message = "La contrasena ha sido validada";
                 }
                 else
                 {
+                    // Si pasa la primera validación pero los contenidos de los dos campos de textos no son iguales
+                    // se manda mensaje de que los contenidos no son iguales.
                     ViewBag.Message = "Lo que ingresaste en los campos no es igual";
                 }
             }
             else
             {
+                // En caso de que no pase la primera validación, se manda el mensaje de que la contraseña
+                // no fue validada.
                 ViewBag.Message = "La contrasena NO ha sido validada";
             }
-
+            // Esta función retorna la vista Index.
             return View("Index");
         }
         #endregion Metodos
